@@ -40,9 +40,12 @@ Creep.prototype.setState = function (state) {
   this._states.push(state);
   this.memory.state = state;
 };
-Creep.prototype.isFull = function () {
-  return !this.store.getFreeCapacity();
-};
+
+Object.defineProperty(Creep.prototype, 'isFull', {
+  get(this: Creep) {
+    return !this.store.getFreeCapacity();
+  }
+});
 
 Creep.prototype.isEmpty = function () {
   return !this.store.getUsedCapacity();
