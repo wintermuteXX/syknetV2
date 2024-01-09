@@ -58,7 +58,7 @@ Creep.prototype.isInHomeroom = function () {
 
 Creep.prototype.toString = function (htmlLink = true) {
   if (htmlLink) {
-    var onClick = '';
+    let onClick = '';
     if (this.id)
       onClick +=
         `angular.element('body').injector().get('RoomViewPendingSelector').set('${this.id}');` +

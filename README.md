@@ -17,4 +17,5 @@ Use the NPM scripts as aliases for Rollup commands to simplify the build and upl
 ## Kudos
 
 Special thanks to @admon84
+
 Screeps Autonomous Framework is a starter kit for developing your own Screeps bot with TypeScript.
