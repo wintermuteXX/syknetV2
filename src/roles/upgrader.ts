@@ -30,7 +30,7 @@ export function run(creep: Creep) {
 }
 
 function runHarvestEnergy(creep: Creep) {
-  if (creep.isFull) {
+  if (creep.isFull()) {
     creep.say('🙏Upgrade');
     creep.setState(State.UpgradeController);
     runUpgradeController(creep);
