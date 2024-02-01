@@ -64,14 +64,14 @@ Room.prototype.hostiles = function () {
 
 Room.prototype.invaders = function () {
   if (!this._invaders) {
-    this._invaders = _.filter(this.hostiles, (creep: Creep) => creep.owner.username == 'Invader');
+    this._invaders = _.filter(this.hostiles(), (creep: Creep) => creep.owner.username == 'Invader');
   }
   return this._invaders;
 };
 
 Room.prototype.sourceKeepers = function () {
   if (!this._sourceKeepers) {
-    this._sourceKeepers = _.filter(this.hostiles, (creep: Creep) => creep.owner.username == 'Source Keeper');
+    this._sourceKeepers = _.filter(this.hostiles(), (creep: Creep) => creep.owner.username == 'Source Keeper');
   }
   return this._sourceKeepers;
 };
@@ -79,7 +79,7 @@ Room.prototype.sourceKeepers = function () {
 Room.prototype.playerHostiles = function () {
   if (!this._playerHostiles) {
     this._playerHostiles = _.filter(
-      this.hostiles,
+      this.hostiles(),
       (creep: Creep) => creep.owner.username != 'Invader' && creep.owner.username != 'Source Keeper'
     );
   }
@@ -89,7 +89,7 @@ Room.prototype.playerHostiles = function () {
 Room.prototype.dangerousHostiles = function () {
   if (!this._dangerousHostiles) {
     this._dangerousHostiles = _.filter(
-      this.hostiles,
+      this.hostiles(),
       (creep: Creep) =>
         creep.getActiveBodyparts(ATTACK) > 0 ||
         creep.getActiveBodyparts(WORK) > 0 ||
@@ -103,7 +103,7 @@ Room.prototype.dangerousHostiles = function () {
 Room.prototype.dangerousPlayerHostiles = function () {
   if (!this._dangerousPlayerHostiles) {
     this._dangerousPlayerHostiles = _.filter(
-      this.playerHostiles,
+      this.playerHostiles(),
       (c: Creep) =>
         c.getActiveBodyparts(ATTACK) > 0 ||
         c.getActiveBodyparts(WORK) > 0 ||
