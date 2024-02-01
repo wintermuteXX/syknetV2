@@ -64,22 +64,14 @@ Room.prototype.hostiles = function () {
 
 Room.prototype.invaders = function () {
   if (!this._invaders) {
-<<<<<<< HEAD
     this._invaders = _.filter(this.hostiles(), (creep: Creep) => creep.owner.username === 'Invader');
-=======
-    this._invaders = _.filter(this.hostiles, (creep: Creep) => creep.owner.username === 'Invader');
->>>>>>> ce859c8dc9b2db27f608e5bc981e77d9d18d6c40
   }
   return this._invaders;
 };
 
 Room.prototype.sourceKeepers = function () {
   if (!this._sourceKeepers) {
-<<<<<<< HEAD
     this._sourceKeepers = _.filter(this.hostiles(), (creep: Creep) => creep.owner.username === 'Source Keeper');
-=======
-    this._sourceKeepers = _.filter(this.hostiles, (creep: Creep) => creep.owner.username === 'Source Keeper');
->>>>>>> ce859c8dc9b2db27f608e5bc981e77d9d18d6c40
   }
   return this._sourceKeepers;
 };
@@ -87,13 +79,8 @@ Room.prototype.sourceKeepers = function () {
 Room.prototype.playerHostiles = function () {
   if (!this._playerHostiles) {
     this._playerHostiles = _.filter(
-<<<<<<< HEAD
       this.hostiles(),
       (creep: Creep) => creep.owner.username != 'Invader' && creep.owner.username !== 'Source Keeper'
-=======
-      this.hostiles,
-      (creep: Creep) => creep.owner.username !== 'Invader' && creep.owner.username !== 'Source Keeper'
->>>>>>> ce859c8dc9b2db27f608e5bc981e77d9d18d6c40
     );
   }
   return this._playerHostiles;
