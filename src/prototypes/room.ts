@@ -80,7 +80,7 @@ Room.prototype.playerHostiles = function () {
   if (!this._playerHostiles) {
     this._playerHostiles = _.filter(
       this.hostiles(),
-      (creep: Creep) => creep.owner.username != 'Invader' && creep.owner.username !== 'Source Keeper'
+      (creep: Creep) => creep.owner.username !== 'Invader' && creep.owner.username !== 'Source Keeper'
     );
   }
   return this._playerHostiles;
