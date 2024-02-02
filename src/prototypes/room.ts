@@ -84,9 +84,11 @@ Object.defineProperty(Room.prototype, 'hostiles', {
     if (!this._hostiles) {
       this._hostiles = this.find(
         FIND_HOSTILE_CREEPS
-        /*, {
+        /*
+        , {
 				filter: (creep: Creep) => !isAlly(creep.owner.username),
-			}*/
+			  }
+        */
       );
     }
     return this._hostiles;
@@ -97,7 +99,7 @@ Object.defineProperty(Room.prototype, 'hostiles', {
 Object.defineProperty(Room.prototype, 'invaders', {
   get(this: Room) {
     if (!this._invaders) {
-      this._invaders = _.filter(this.hostiles, (creep: Creep) => creep.owner.username == 'Invader');
+      this._invaders = _.filter(this.hostiles, (creep: Creep) => creep.owner.username === 'Invader');
     }
     return this._invaders;
   },
