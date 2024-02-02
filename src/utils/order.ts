@@ -14,7 +14,7 @@ import { getCostForBody } from 'utils/profile';
  * @param order The `Order` containing details about the creep.
  */
 export function orderCreep(room: Room, order: Order) {
-  if (!room.getMySpawn()) {
+  if (!room.getMyFirstSpawn) {
     return false;
   }
 
