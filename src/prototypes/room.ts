@@ -99,7 +99,8 @@ Object.defineProperty(Room.prototype, 'hostiles', {
 Object.defineProperty(Room.prototype, 'invaders', {
   get(this: Room) {
     if (!this._invaders) {
-      this._invaders = _.filter(this.hostiles, (creep: Creep) => creep.owner.username === 'Invader');
+      //  this._invaders = _.filter(this.hostiles, (creep: Creep) => creep.owner.username === 'Invader');
+      this._invaders = this.hostiles.filter((creep: Creep) => creep.owner.username === 'Invader');
     }
     return this._invaders;
   },
@@ -109,7 +110,7 @@ Object.defineProperty(Room.prototype, 'invaders', {
 Object.defineProperty(Room.prototype, 'sourceKeepers', {
   get(this: Room) {
     if (!this._sourceKeepers) {
-      this._sourceKeepers = _.filter(this.hostiles, (creep: Creep) => creep.owner.username === 'Source Keeper');
+      this._sourceKeepers = this.hostiles.filter((creep: Creep) => creep.owner.username === 'Source Keeper');
     }
     return this._sourceKeepers;
   },
@@ -119,8 +120,7 @@ Object.defineProperty(Room.prototype, 'sourceKeepers', {
 Object.defineProperty(Room.prototype, 'playerHostiles', {
   get(this: Room) {
     if (!this._playerHostiles) {
-      this._playerHostiles = _.filter(
-        this.hostiles,
+      this._playerHostiles = this.hostiles.filter(
         (creep: Creep) => creep.owner.username !== 'Invader' && creep.owner.username !== 'Source Keeper'
       );
     }
@@ -132,8 +132,7 @@ Object.defineProperty(Room.prototype, 'playerHostiles', {
 Object.defineProperty(Room.prototype, 'dangerousHostiles', {
   get(this: Room) {
     if (!this._dangerousHostiles) {
-      this._dangerousHostiles = _.filter(
-        this.hostiles,
+      this._dangerousHostiles = this.hostiles.filter(
         (creep: Creep) =>
           creep.getActiveBodyparts(ATTACK) > 0 ||
           creep.getActiveBodyparts(WORK) > 0 ||
@@ -149,13 +148,12 @@ Object.defineProperty(Room.prototype, 'dangerousHostiles', {
 Object.defineProperty(Room.prototype, 'dangerousPlayerHostiles', {
   get(this: Room) {
     if (!this._dangerousPlayerHostiles) {
-      this._dangerousPlayerHostiles = _.filter(
-        this.playerHostiles,
-        (c: Creep) =>
-          c.getActiveBodyparts(ATTACK) > 0 ||
-          c.getActiveBodyparts(WORK) > 0 ||
-          c.getActiveBodyparts(RANGED_ATTACK) > 0 ||
-          c.getActiveBodyparts(HEAL) > 0
+      this._dangerousPlayerHostiles = this.playerHostiles.filter(
+        (creep: Creep) =>
+          creep.getActiveBodyparts(ATTACK) > 0 ||
+          creep.getActiveBodyparts(WORK) > 0 ||
+          creep.getActiveBodyparts(RANGED_ATTACK) > 0 ||
+          creep.getActiveBodyparts(HEAL) > 0
       );
     }
     return this._dangerousPlayerHostiles;
